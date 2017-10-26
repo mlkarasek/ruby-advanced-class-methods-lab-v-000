@@ -28,10 +28,6 @@ class Song
     item.save
     item
   end
-  
-def self.destroy_all
-  self.all.clear
-end
 
 def self.find_by_name
 end
@@ -48,4 +44,7 @@ end
 def create_from_filename
 end
 
+def self.destroy_all
+  self.all.clear
+end
 end
