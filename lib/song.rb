@@ -36,6 +36,7 @@ def self.find_or_create_by_name
 end
 
 def self.alphabetical
+  @@all.sort_by{|s| s.name}
 end
 
 def self.new_from_filename
