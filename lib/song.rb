@@ -1,3 +1,5 @@
+require 'pry'
+
 class Song
   attr_accessor :name, :artist_name
   @@all = []
@@ -11,48 +13,53 @@ class Song
   end
 
   def self.create
-    item = self.new
-    item.save
-    item
+    song = Song.new
+    song.save
+    song
   end
 
-  def self.new_by_name(name)
-    item = self.new
-    item.name = name
-    item
+  def self.new_by_name(song_name)
+  song = self.new
+  song.name = song_name
+  song
   end
 
-  def self.create_by_name(name)
-    item = self.new
-    item.name = name
-    item.save
-    item
+  def self.create_by_name(song_name)
+    song = self.new
+    song.name = song_name
+    song.save
+    song
   end
 
-def self.find_by_name(song_name)
-  self.all.detect{|song| song.name == song_name}
-end
+  def self.find_by_name(song_name)
+    self.all.detect{|song| song.name == song_name}
+  end
 
-def self.find_or_create_by_name
+  def self.find_or_create_by_name(song_name)
   if self.find_by_name(song_name) == nil
-      self.create_by_name(song_name)
-    else
-      self.find_by_name(song_name)
-    end
+    self.create_by_name(song_name)
+  else
+    self.find_by_name(song_name)
   end
-
-def self.alphabetical
-  @@all.sort_by{|s| s.name}
 end
 
-def self.new_from_filename
+  def self.alphabetical
+    @@all.sort_by {|song| song.name}
+  end
+
+  def self.new_from_filename(filename)
   division = filename.split(" - ")
   artist_name = division[0]
   song_name = division[1].gsub(".mp3", "")
-end
 
-def create_from_filename
-  division = filename.split(" - ")
+  song = self.new
+  song.name = song_name
+  song.artist_name = artist_name
+  song
+  end
+
+  def self.create_from_filename(filename)
+    division = filename.split(" - ")
     artist_name = division[0]
     song_name = division[1].gsub(".mp3", "")
 
@@ -60,9 +67,9 @@ def create_from_filename
     song.name = song_name
     song.artist_name = artist_name
     song
-end
+  end
 
-def self.destroy_all
-  self.all.clear
-end
+  def self.destroy_all
+    self.all.clear
+  end
 end
