@@ -10,24 +10,25 @@ class Song
     self.class.all << self
   end
 
-  def song_class
-    @name = name 
+  def self.create
+    item = self.new
+    item.save
+    item
   end
 
-  def new_by_name
-
+  def self.new_by_name(name)
+    item = self.new
+    item.name = name
+    item
   end
 
-  def create_by_name
+  def self.create_by_name(name)
+    item = self.new
+    item.name = name
+    item.save
+    item
   end
-
-  def find_by_name
-  end
-
-  def find_or_create_by_name
-  end
-
-
+  
 def self.destroy_all
   self.all.clear
 end
