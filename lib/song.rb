@@ -10,7 +10,7 @@ class Song
     self.class.all << self
   end
 
-  def song_class 
+  def song_class
   end
 
   def new_by_name
@@ -23,9 +23,12 @@ class Song
   def find_by_name
   end
 
+  def find_or_create_by_name
+  end
+
 
 def self.destroy_all
   self.all.clear
-end 
+end
 
 end
