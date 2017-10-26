@@ -10,6 +10,19 @@ class Song
     self.class.all << self
   end
 
+  def song_class 
+  end
+
+  def new_by_name
+
+  end
+
+  def create_by_name
+  end
+
+  def find_by_name
+  end
+
 
 def self.destroy_all
   self.all.clear
